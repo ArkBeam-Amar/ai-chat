@@ -4,7 +4,7 @@ export function useChat() {
   async function* streamResponse(
     url: string,
     messages: ChatMessage[],
-    llmParams: LlmParams
+    llmParams: LlmParams,
   ) {
     let buffer = '';
 
@@ -47,13 +47,15 @@ export function useChat() {
               if (jsonData.response) {
                 yield jsonData.response;
               }
-            } catch (parseError) {
+            }
+            catch (parseError) {
               console.warn('Error parsing JSON:', parseError);
             }
           }
         }
       }
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Error sending message:', error);
 
       throw error;
@@ -63,7 +65,7 @@ export function useChat() {
   async function getResponse(
     url: string,
     messages: ChatMessage[],
-    llmParams: LlmParams
+    llmParams: LlmParams,
   ) {
     try {
       const response = await $fetch<string>(url, {
@@ -75,7 +77,8 @@ export function useChat() {
       });
 
       return response;
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Error sending message:', error);
       throw error;
     }

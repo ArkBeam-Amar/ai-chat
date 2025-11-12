@@ -6,8 +6,14 @@
       @show-drawer="$emit('showDrawer')"
     />
     <USeparator />
-    <div ref="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-5">
-      <template v-for="message in chatHistory" :key="message.id">
+    <div
+      ref="chatContainer"
+      class="flex-1 overflow-y-auto p-4 space-y-5"
+    >
+      <template
+        v-for="message in chatHistory"
+        :key="message.id"
+      >
         <UserMessage
           v-if="message.role === 'user'"
           :content="message.content"
@@ -19,8 +25,14 @@
           :message-id="message.id"
         />
       </template>
-      <ChatLoadingSkeleton v-if="loading === 'message'" class="p-4" />
-      <NoChats v-if="chatHistory.length === 0" class="h-full" />
+      <ChatLoadingSkeleton
+        v-if="loading === 'message'"
+        class="p-4"
+      />
+      <NoChats
+        v-if="chatHistory.length === 0"
+        class="h-full"
+      />
     </div>
 
     <div
@@ -53,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ChatMessage, LoadingType } from "~~/types";
+import type { ChatMessage, LoadingType } from '~~/types';
 
 const props = defineProps<{
   chatHistory: ChatMessage[];
@@ -66,8 +78,8 @@ const emit = defineEmits<{
   showDrawer: [];
 }>();
 
-const userMessage = ref("");
-const chatContainer = useTemplateRef("chatContainer");
+const userMessage = ref('');
+const chatContainer = useTemplateRef('chatContainer');
 let observer: MutationObserver | null = null;
 
 onMounted(() => {
@@ -92,11 +104,11 @@ onUnmounted(() => {
   }
 });
 
-const userInput = useTemplateRef("userInput");
+const userInput = useTemplateRef('userInput');
 watch(
   () => props.loading,
   () => {
-    if (props.loading === "idle") {
+    if (props.loading === 'idle') {
       nextTick(() => {
         userInput.value?.textareaRef?.focus();
       });
@@ -107,8 +119,8 @@ watch(
 const sendMessage = () => {
   if (!userMessage.value.trim()) return;
 
-  emit("message", userMessage.value);
+  emit('message', userMessage.value);
 
-  userMessage.value = "";
+  userMessage.value = '';
 };
 </script>

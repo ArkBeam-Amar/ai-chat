@@ -26,14 +26,15 @@ export default defineCachedEventHandler(
         {
           method: 'GET',
           headers: {
-            Authorization: `Bearer ${userToken}`,
+            'Authorization': `Bearer ${userToken}`,
             'Content-Type': 'application/json',
           },
-        }
+        },
       );
 
-      return response.result.map((model) => model.name);
-    } catch (error) {
+      return response.result.map(model => model.name);
+    }
+    catch (error) {
       console.error('Error fetching models:', error);
     }
 
@@ -41,5 +42,5 @@ export default defineCachedEventHandler(
   },
   {
     maxAge: 24 * 60 * 60, // 1 day
-  }
+  },
 );

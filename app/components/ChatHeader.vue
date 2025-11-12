@@ -4,7 +4,10 @@
       <h2 class="text-xl md:text-2xl text-[var(--ui-primary)] font-bold">
         Hub Chat
       </h2>
-      <UTooltip v-if="!clearDisabled" text="Clear chat">
+      <UTooltip
+        v-if="!clearDisabled"
+        text="Clear chat"
+      >
         <UButton
           color="neutral"
           variant="subtle"
@@ -34,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-defineEmits(["clear", "showDrawer"]);
+defineEmits(['clear', 'showDrawer']);
 
 defineProps({
   clearDisabled: {

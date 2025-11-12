@@ -1,7 +1,7 @@
 export function useAIChat(
   apiBase: string,
   model: string,
-  params?: Record<string, unknown>
+  params?: Record<string, unknown>,
 ) {
   async function* chat(): AsyncGenerator<string, void, unknown> {
     try {
@@ -41,18 +41,21 @@ export function useAIChat(
                 if (jsonData.response) {
                   yield jsonData.response;
                 }
-              } catch (parseError) {
+              }
+              catch (parseError) {
                 console.warn('Error parsing JSON:', parseError);
               }
             }
           }
         }
-      } else {
+      }
+      else {
         yield response as string;
 
         return;
       }
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Error sending message:', error);
       throw error;
     }

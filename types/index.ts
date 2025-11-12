@@ -17,4 +17,4 @@ export type ChatMessage = {
   id: string;
 };
 
-export type LoadingType = "idle" | "stream" | "message";
+export type LoadingType = 'idle' | 'stream' | 'message';

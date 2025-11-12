@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
   if (!model || !params) {
     throw createError({
       statusCode: 400,
-      statusMessage: "Missing chat model or params",
+      statusMessage: 'Missing chat model or params',
     });
   }
 
@@ -23,13 +23,13 @@ export default defineEventHandler(async (event) => {
   try {
     const result = await ai.run(model, {
       messages: params.systemPrompt
-        ? [{ role: "system", content: params.systemPrompt }, ...params.messages]
+        ? [{ role: 'system', content: params.systemPrompt }, ...params.messages]
         : params.messages,
       ...config,
     });
 
     if (params.stream) {
-      setResponseHeader(event, "Content-Type", "text/event-stream");
+      setResponseHeader(event, 'Content-Type', 'text/event-stream');
       return sendStream(event, result as ReadableStream);
     }
 
@@ -38,11 +38,12 @@ export default defineEventHandler(async (event) => {
         response: string;
       }
     ).response;
-  } catch (error) {
+  }
+  catch (error) {
     console.error(error);
     throw createError({
       statusCode: 500,
-      statusMessage: "Error processing request",
+      statusMessage: 'Error processing request',
     });
   }
 });

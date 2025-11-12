@@ -1,5 +1,8 @@
 <template>
-  <UFormField :label="label" :ui="{ container: 'mt-2' }">
+  <UFormField
+    :label="label"
+    :ui="{ container: 'mt-2' }"
+  >
     <template #hint>
       <UInput
         v-model="model"
