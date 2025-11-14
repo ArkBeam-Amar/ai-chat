@@ -180,7 +180,7 @@ const defaultModels = [
   '@hf/thebloke/zephyr-7b-beta-awq',
 ];
 
-const { data: serverModels } = await useFetch('/api/models');
+const { data: serverModels } = useFetch('/api/models');
 
 const models = computed(() =>
   serverModels.value?.length ? serverModels.value : defaultModels,
