@@ -1,9 +1,6 @@
 <template>
-  <div class="flex items-center justify-between px-4 h-14">
-    <div class="flex items-center gap-x-4">
-      <h2 class="text-xl md:text-2xl text-[var(--ui-primary)] font-bold">
-        Hub Chat
-      </h2>
+  <UDashboardNavbar title="Hub Chat">
+    <template #trailing>
       <UTooltip
         v-if="!clearDisabled"
         text="Clear chat"
@@ -15,8 +12,8 @@
           @click="$emit('clear')"
         />
       </UTooltip>
-    </div>
-    <div class="flex items-center gap-x-4">
+    </template>
+    <template #right>
       <UColorModeSelect />
       <UButton
         icon="i-simple-icons-github"
@@ -25,19 +22,12 @@
         to="https://github.com/ra-jeev/hub-chat"
         target="_blank"
       />
-      <UButton
-        icon="i-lucide-settings"
-        color="neutral"
-        variant="ghost"
-        class="md:hidden"
-        @click="$emit('showDrawer')"
-      />
-    </div>
-  </div>
+    </template>
+  </UDashboardNavbar>
 </template>
 
 <script setup lang="ts">
-defineEmits(['clear', 'showDrawer']);
+defineEmits(['clear']);
 
 defineProps({
   clearDisabled: {
