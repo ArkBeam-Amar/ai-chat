@@ -1,20 +1,5 @@
 <template>
   <div class="h-full flex flex-col overflow-hidden">
-    <div class="flex items-center justify-between px-4 h-14">
-      <div class="flex items-center gap-x-4">
-        <h2 class="md:text-lg text-gray-600 dark:text-gray-300">
-          LLM Settings
-        </h2>
-      </div>
-      <UButton
-        icon="i-lucide-x"
-        color="neutral"
-        variant="ghost"
-        class="md:hidden"
-        @click="$emit('hideDrawer')"
-      />
-    </div>
-    <USeparator />
     <div class="p-4 flex-1 space-y-6 overflow-y-auto">
       <UFormField label="Model">
         <USelectMenu
@@ -133,7 +118,7 @@ const llmParams = defineModel('llmParams', {
   required: true,
 });
 
-defineEmits(['hideDrawer', 'reset']);
+defineEmits(['reset']);
 
 const accordionItems = [
   {
