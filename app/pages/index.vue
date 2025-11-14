@@ -13,7 +13,6 @@
         :loading="loading"
         @clear="chatHistory = []"
         @message="sendMessage"
-        @show-drawer="isDrawerOpen = true"
       />
     </UDashboardPanel>
   </UDashboardGroup>
@@ -22,8 +21,6 @@
 <script setup lang="ts">
 import { useStorageAsync } from '@vueuse/core';
 import type { ChatMessage, LlmParams, LoadingType } from '~~/types';
-
-const isDrawerOpen = ref(false);
 
 const defaultSettings: LlmParams = {
   model: '@cf/meta/llama-3.2-3b-instruct',

@@ -3,7 +3,6 @@
     <ChatHeader
       :clear-disabled="chatHistory.length === 0"
       @clear="$emit('clear')"
-      @show-drawer="$emit('showDrawer')"
     />
     <USeparator />
     <div
@@ -75,7 +74,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   message: [message: string];
   clear: [];
-  showDrawer: [];
 }>();
 
 const userMessage = ref('');
